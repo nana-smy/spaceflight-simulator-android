@@ -39,3 +39,7 @@ Thumbs.db
 # 其他
 sysinfo.txt
 crashlytics-build.properties
+
+# android-export 构建产物
+/android-export/.gradle/
+/android-export/**/build/

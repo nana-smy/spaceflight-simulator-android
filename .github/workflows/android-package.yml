@@ -1,0 +1,67 @@
+name: Android Package (no Unity license)
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ 'v*' ]
+    paths:
+      - 'android-export/**'
+      - '.github/workflows/android-package.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: android-package-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  package:
+    name: Gradle assembleRelease
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '11'
+
+      - name: Install Android SDK 30 / build-tools 30.0.2
+        run: |
+          SDKMANAGER=$(find "$ANDROID_HOME/cmdline-tools" -name sdkmanager | head -1)
+          yes | "$SDKMANAGER" "platforms;android-30" "build-tools;30.0.2" > /dev/null
+          echo "ANDROID_HOME=$ANDROID_HOME"
+
+      - name: Install Gradle 6.1.1
+        run: |
+          curl -sSLo /tmp/gradle.zip https://services.gradle.org/distributions/gradle-6.1.1-bin.zip
+          unzip -q /tmp/gradle.zip -d "$HOME"
+          echo "$HOME/gradle-6.1.1/bin" >> "$GITHUB_PATH"
+
+      - name: Build release APK
+        working-directory: android-export
+        run: gradle assembleRelease --no-daemon --stacktrace
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SpaceflightSimulator-APK
+          path: android-export/launcher/build/outputs/apk/release/*.apk
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Attach APK to GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" android-export/launcher/build/outputs/apk/release/*.apk \
+            --title "${GITHUB_REF_NAME}" --generate-notes

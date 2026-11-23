@@ -13,34 +13,40 @@ Unity 工程，自 Android 导出包整理而来。
 2. 打开本目录（`Assets`、`Packages`、`ProjectSettings` 三件套）
 3. Build Settings 选 Android，切换 IL2CPP 并勾选 arm64-v8a
 
-## 云构建（GitHub Actions）
+## 云构建 A：Gradle 打包（不需要 Unity 许可证）
 
-`Android Build` 工作流在 push 到 `main`、提 PR 或手动触发时，用 GameCI 在 Ubuntu runner 上直接出 APK（IL2CPP、arm64、debug 签名）：
+`.github/workflows/android-package.yml`，push 到 `main`（改动 `android-export/**` 时）、手动触发、或推 `v*` 标签时运行：
 
-- 产物：Actions 运行页 → Artifacts → `SpaceflightSimulator-Android`
-- 推 `v*` 标签会自动创建 Release 并附上 APK（需先把 Settings → Actions → General 的 Workflow permissions 设为 **Read and write**）
-- 没配 `UNITY_LICENSE` 时，工作流会在第二步明确报错，不会白跑
-- `Library/` 走 Actions 缓存，二次构建明显更快
+- 环境：JDK 11 + Gradle 6.1.1 + Android SDK 30 / build-tools 30.0.2
+- 输入：`android-export/` —— Unity 导出的 Gradle 工程，已带预编译好的 `libil2cpp.so`、`libunity.so`、`data.unity3d` 等产物（115 MB）
+- 产物：`gradle assembleRelease` 出来的 APK → Actions Artifacts `SpaceflightSimulator-APK`；推标签时自动建 Release 挂 APK
 
-首次使用需在仓库 Settings → Secrets and variables → Actions 里配置：
+能改什么：包名、版本号、签名、`AndroidManifest.xml`、launcher/java 代码、mipmap 等资源。
+
+不能改什么：Unity 场景、脚本、贴图、字体等任何 Unity 侧内容 —— 改完必须本地用 Unity 重新导出一次，把新的 Gradle 工程覆盖到 `android-export/`（导出的 IL2CPP 库是编译产物，无法在 CI 里重新生成）。
+
+> tag 自动发 Release 需要把 Settings → Actions → General 的 Workflow permissions 设为 **Read and write**（默认是 read）。
+
+## 云构建 B：Unity 构建（需要许可证）
+
+`.github/workflows/android-build-unity.yml`，手动触发，用 GameCI 跑完整 Unity 构建（含 IL2CPP 重编）：
 
 | Secret | 说明 |
 |---|---|
-| `UNITY_EMAIL` | Unity ID 邮箱 |
-| `UNITY_PASSWORD` | Unity ID 密码 |
-| `UNITY_LICENSE` | `.ulf` 许可证文件全文 |
+| `UNITY_LICENSE` | `.ulf` 许可证文件全文（Unity Personal 免费） |
+| `UNITY_EMAIL` / `UNITY_PASSWORD` | 可选，Pro/Plus 的 `UNITY_SERIAL` 流程用 |
 
-获取 `.ulf`（Personal 许可证）：
+获取 `.ulf`：
 
-1. 生成 `.alf`。本地装了 Unity 2021.3.25f1c1 就在终端跑
+1. 生成 `.alf`：本地装了 Unity 2021.3.25f1c1 就在终端跑
    `Unity -batchmode -nographics -createManualActivationFile -logFile`；
    没装的话用 Docker：
    `docker run --rm -v "$PWD":/project unityci/editor:ubuntu-2021.3.25f1-android-3 unity-editor -batchmode -nographics -createManualActivationFile -logFile -`
 2. 把 `.alf` 传到 https://license.unity3d.com/manual ，选 Unity Personal 走完流程，下载 `.ulf`
-3. 把 `.ulf` 内容整段贴进 `UNITY_LICENSE` secret（`UNITY_EMAIL` / `UNITY_PASSWORD` 可选，主要给 Pro/Plus 的 `UNITY_SERIAL` 流程用）
+3. `.ulf` 内容整段贴进 `UNITY_LICENSE`
 
-> 工程由中国版编辑器 `2021.3.25f1c1` 导出，CI 用的是同版本号国际版镜像 `unityci/editor:ubuntu-2021.3.25f1-android-3`。若构建时报版本或中国区服务不兼容，把工作流里的 `unityVersion` 换成你们可用的 c1 镜像即可（GameCI 暂未提供 c1 镜像）。
+> 工程由中国版编辑器 `2021.3.25f1c1` 导出，GameCI 没有 c1 镜像，工作流用同版本号的国际版镜像 `ubuntu-2021.3.25f1-android-3`；报版本不匹配就换 `customImage`。
 
 ## 说明
 
-`Library/`、`Logs/`、`UserSettings/` 等构建缓存已通过 `.gitignore` 排除；原始导出压缩包（1.22 GB）不包含在本仓库。
+`Library/`、`Logs/`、`UserSettings/` 等构建缓存已通过 `.gitignore` 排除；`android-export/` 是刻意入库的导出产物（115 MB），原始导出压缩包（1.22 GB）不包含在本仓库。
