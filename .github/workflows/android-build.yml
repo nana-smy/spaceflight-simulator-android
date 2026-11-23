@@ -31,6 +31,15 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Check Unity license secret
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        run: |
+          if [ -z "$UNITY_LICENSE" ]; then
+            echo "::error::缺少 UNITY_LICENSE secret（.ulf 内容），获取方式见 README「云构建」一节"
+            exit 1
+          fi
+
       # Unity + IL2CPP 镜像很大，先腾出磁盘
       - name: Free disk space
         uses: jlumbroso/free-disk-space@v1.3.1
@@ -41,15 +50,6 @@ jobs:
           large-packages: false
           swap-storage: true
           tool-cache: false
-
-      - name: Check Unity license secret
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-        run: |
-          if [ -z "$UNITY_LICENSE" ]; then
-            echo "::error::缺少 UNITY_LICENSE secret（.ulf 内容），获取方式见 README「云构建」一节"
-            exit 1
-          fi
 
       - name: Cache Unity Library
         uses: actions/cache@v4
