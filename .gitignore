@@ -1,16 +1,17 @@
-# Unity 生成目录
-[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
-[Bb]uild/
-[Bb]uilds/
-[Ll]ogs/
-[Uu]ser[Ss]ettings/
-[Mm]emoryCaptures/
-[Rr]ecordings/
+# Unity 生成目录（仅仓库根目录）
+/Library/
+/Temp/
+/Obj/
+/Build/
+/Builds/
+/Logs/
+/UserSettings/
+/MemoryCaptures/
+/Recordings/
 
 # IDE / 工程文件
 .vs/
+.vscode/
 .idea/
 *.csproj
 *.unityproj
@@ -30,10 +31,10 @@
 .DS_Store
 Thumbs.db
 
-# 打包产物
-*.apk
-*.aab
-*.unitypackage
+# 打包产物（根目录）
+/*.apk
+/*.aab
+/*.unitypackage
 
 # 其他
 sysinfo.txt
