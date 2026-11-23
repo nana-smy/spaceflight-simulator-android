@@ -5,13 +5,33 @@ Unity 工程，自 Android 导出包整理而来。
 - Unity 版本：`2021.3.25f1c1`
 - 产品名：Spaceflight Simulator
 - 版本号：1.5.10.2
-- 目标平台：Android / IL2CPP / arm64-v8a
+- 目标平台：Android / IL2CPP / arm64-v8a（minSdk 22）
 
 ## 打开工程
 
 1. 用 Unity Hub 安装 `2021.3.25f1c1`
 2. 打开本目录（`Assets`、`Packages`、`ProjectSettings` 三件套）
 3. Build Settings 选 Android，切换 IL2CPP 并勾选 arm64-v8a
+
+## 云构建（GitHub Actions）
+
+`Android Build` 工作流在 push 到 `main`、提 PR 或手动触发时，用 GameCI 在 Ubuntu runner 上直接出 APK（IL2CPP、arm64、debug 签名）：
+
+- 产物：Actions 运行页 → Artifacts → `SpaceflightSimulator-Android`
+- 推 `v*` 标签会自动创建 Release 并附上 APK
+- `Library/` 走 Actions 缓存，二次构建明显更快
+
+首次使用需在仓库 Settings → Secrets and variables → Actions 里配置：
+
+| Secret | 说明 |
+|---|---|
+| `UNITY_EMAIL` | Unity ID 邮箱 |
+| `UNITY_PASSWORD` | Unity ID 密码 |
+| `UNITY_LICENSE` | `.ulf` 许可证文件全文 |
+
+获取 `.ulf`：手动跑一次 `Unity License Activation (manual)` 工作流，下载生成的 `.alf`，到 license.unity3d.com 按 Unity 官方流程换取 `.ulf`，再把文件内容整段存进 `UNITY_LICENSE`。
+
+> 工程由中国版编辑器 `2021.3.25f1c1` 导出，CI 用的是同版本号国际版镜像 `unityci/editor:ubuntu-2021.3.25f1-android-3`。若构建时报版本或中国区服务不兼容，把工作流里的 `unityVersion` 换成你们可用的 c1 镜像即可（GameCI 暂未提供 c1 镜像）。
 
 ## 说明
 
