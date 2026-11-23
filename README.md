@@ -18,7 +18,7 @@ Unity 工程，自 Android 导出包整理而来。
 `Android Build` 工作流在 push 到 `main`、提 PR 或手动触发时，用 GameCI 在 Ubuntu runner 上直接出 APK（IL2CPP、arm64、debug 签名）：
 
 - 产物：Actions 运行页 → Artifacts → `SpaceflightSimulator-Android`
-- 推 `v*` 标签会自动创建 Release 并附上 APK
+- 推 `v*` 标签会自动创建 Release 并附上 APK（需先把 Settings → Actions → General 的 Workflow permissions 设为 **Read and write**）
 - 没配 `UNITY_LICENSE` 时，工作流会在第二步明确报错，不会白跑
 - `Library/` 走 Actions 缓存，二次构建明显更快
 
