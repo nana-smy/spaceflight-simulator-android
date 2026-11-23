@@ -19,6 +19,7 @@ Unity 工程，自 Android 导出包整理而来。
 
 - 产物：Actions 运行页 → Artifacts → `SpaceflightSimulator-Android`
 - 推 `v*` 标签会自动创建 Release 并附上 APK
+- 没配 `UNITY_LICENSE` 时，工作流会在第二步明确报错，不会白跑
 - `Library/` 走 Actions 缓存，二次构建明显更快
 
 首次使用需在仓库 Settings → Secrets and variables → Actions 里配置：
@@ -29,7 +30,14 @@ Unity 工程，自 Android 导出包整理而来。
 | `UNITY_PASSWORD` | Unity ID 密码 |
 | `UNITY_LICENSE` | `.ulf` 许可证文件全文 |
 
-获取 `.ulf`：手动跑一次 `Unity License Activation (manual)` 工作流，下载生成的 `.alf`，到 license.unity3d.com 按 Unity 官方流程换取 `.ulf`，再把文件内容整段存进 `UNITY_LICENSE`。
+获取 `.ulf`（Personal 许可证）：
+
+1. 生成 `.alf`。本地装了 Unity 2021.3.25f1c1 就在终端跑
+   `Unity -batchmode -nographics -createManualActivationFile -logFile`；
+   没装的话用 Docker：
+   `docker run --rm -v "$PWD":/project unityci/editor:ubuntu-2021.3.25f1-android-3 unity-editor -batchmode -nographics -createManualActivationFile -logFile -`
+2. 把 `.alf` 传到 https://license.unity3d.com/manual ，选 Unity Personal 走完流程，下载 `.ulf`
+3. 把 `.ulf` 内容整段贴进 `UNITY_LICENSE` secret（`UNITY_EMAIL` / `UNITY_PASSWORD` 可选，主要给 Pro/Plus 的 `UNITY_SERIAL` 流程用）
 
 > 工程由中国版编辑器 `2021.3.25f1c1` 导出，CI 用的是同版本号国际版镜像 `unityci/editor:ubuntu-2021.3.25f1-android-3`。若构建时报版本或中国区服务不兼容，把工作流里的 `unityVersion` 换成你们可用的 c1 镜像即可（GameCI 暂未提供 c1 镜像）。
 
