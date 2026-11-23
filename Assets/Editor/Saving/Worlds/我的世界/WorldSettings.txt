@@ -1,0 +1,26 @@
+{
+  "solarSystem": {
+    "name": ""
+  },
+  "mode": {
+    "mode": 0,
+    "allowQuicksaves": true
+  },
+  "difficulty": {
+    "difficulty": 0
+  },
+  "playtime": {
+    "lastPlayedTime_Ticks": 639227700181415300,
+    "totalPlayTime_Seconds": 210.0
+  },
+  "cheats": {
+    "infiniteFuel": false,
+    "noAtmosphericDrag": false,
+    "unbreakableParts": true,
+    "noGravity": true,
+    "noHeatDamage": true,
+    "noBurnMarks": true,
+    "infiniteBuildArea": true,
+    "partClipping": true
+  }
+}

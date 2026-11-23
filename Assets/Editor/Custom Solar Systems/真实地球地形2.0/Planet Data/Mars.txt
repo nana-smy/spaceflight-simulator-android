@@ -1,0 +1,135 @@
+{
+  "version": "1.5",
+  "BASE_DATA": {
+    "radius": 169500.0,
+    "gravity": 3.61,
+    "timewarpHeight": 15000.0,
+    "mapColor": {
+      "r": 0.67,
+      "g": 0.34,
+      "b": 0.3,
+      "a": 1.0
+    }
+  },
+  "ATMOSPHERE_PHYSICS_DATA": {
+    "height": 20000.0,
+    "density": 0.0008,
+    "curve": 9.0,
+    "parachuteMultiplier": 2.5,
+    "upperAtmosphere": 0.15
+  },
+  "ATMOSPHERE_VISUALS_DATA": {
+    "GRADIENT": {
+      "positionZ": 5000,
+      "height": 25000.0,
+      "texture": "Atmo_Mars"
+    },
+    "CLOUDS": {
+      "texture": "None",
+      "startHeight": -1.0,
+      "width": 0.0,
+      "height": -1.0,
+      "alpha": 0.0,
+      "velocity": 0.0
+    },
+    "FOG": {
+      "keys": [
+        {
+          "color": {
+            "r": 0.68235296,
+            "g": 0.474509835,
+            "b": 0.407843173,
+            "a": 0.0
+          },
+          "distance": 0.0
+        },
+        {
+          "color": {
+            "r": 0.68235296,
+            "g": 0.474352956,
+            "b": 0.407058835,
+            "a": 0.3
+          },
+          "distance": 15000.0
+        }
+      ]
+    }
+  },
+  "TERRAIN_DATA": {
+    "TERRAIN_TEXTURE_DATA": {
+      "planetTexture": "Mars",
+      "planetTextureCutout": 0.99,
+      "surfaceTexture_A": "Soft_Rocks",
+      "surfaceTextureSize_A": {
+        "x": 25.0,
+        "y": 12.0
+      },
+      "surfaceTexture_B": "Hard_Rocks",
+      "surfaceTextureSize_B": {
+        "x": 40.0,
+        "y": 18.0
+      },
+      "terrainTexture_C": "Soft_Rocks",
+      "terrainTextureSize_C": {
+        "x": 380.0,
+        "y": 170.0
+      },
+      "surfaceLayerSize": 60.0,
+      "minFade": 0.0,
+      "maxFade": 1.0,
+      "shadowIntensity": 7.0,
+      "shadowHeight": 25.0
+    },
+    "terrainFormula": [
+      "OUTPUT = AddHeightMap( Mars,1064999.90956694, 3800)",
+      "OUTPUT = AddHeightMap( Perlin,53249.995478347, 125)",
+      "OUTPUT = AddHeightMap( Perlin,28783.781339647, 65)",
+      "OUTPUT = AddHeightMap( Perlin,12987.8037752066, 24)",
+      "OUTPUT = AddHeightMap( Perlin,3246.95094380165, 7.5)",
+      "OUTPUT = AddHeightMap( Perlin,887.499924639117, 0.8)"
+    ],
+    "textureFormula": [],
+    "verticeSize": 3.0
+  },
+  "POST_PROCESSING": {
+    "keys": [
+      {
+        "height": 3500.0,
+        "shadowIntensity": 1.4,
+        "starIntensity": 1.0,
+        "hueShift": 1.0,
+        "saturation": 0.95,
+        "contrast": 0.95,
+        "red": 1.1,
+        "green": 1.1,
+        "blue": 1.0
+      },
+      {
+        "height": 20000.0,
+        "shadowIntensity": 1.65,
+        "starIntensity": 1.0,
+        "hueShift": 1.0,
+        "saturation": 1.0,
+        "contrast": 1.1,
+        "red": 1.1,
+        "green": 1.1,
+        "blue": 1.0
+      }
+    ]
+  },
+  "ORBIT_DATA": {
+    "parent": "Sun",
+    "semiMajorAxis": 11395000000.0,
+    "eccentricity": 0.1,
+    "argumentOfPeriapsis": 286.0,
+    "multiplierSOI": 2.0,
+    "orbitLineResolution": 100
+  },
+  "ACHIEVEMENT_DATA": {
+    "Landed": true,
+    "Takeoff": true,
+    "Atmosphere": true,
+    "Orbit": true,
+    "Crash": true
+  }
+}

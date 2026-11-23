@@ -1,0 +1,1008 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1709254077376921
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4730242686860875}
+  - component: {fileID: 114724804207875695}
+  - component: {fileID: 114618682377417806}
+  - component: {fileID: 114703437598541787}
+  - component: {fileID: 114884547391421755}
+  - component: {fileID: 114099118695303065}
+  - component: {fileID: 114243736805655561}
+  - component: {fileID: 114061268324235159}
+  - component: {fileID: 114587765826080250}
+  - component: {fileID: 114709867586078768}
+  - component: {fileID: 114044625135789424}
+  - component: {fileID: 114589667821646929}
+  - component: {fileID: 114372920208702427}
+  - component: {fileID: 114025901758691103}
+  - component: {fileID: 114985305603660343}
+  - component: {fileID: 23705390221481576}
+  - component: {fileID: 33977153420339851}
+  - component: {fileID: 114336590748365959}
+  m_Layer: 8
+  m_Name: Fuel Tank
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4730242686860875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114724804207875695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a080cf7e00e1eac1c1bf55c5aedf6db9, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  displayName:
+    TranslatableName: Fuel_Tank_Name
+    plainText: 0
+  description:
+    TranslatableName: Fuel_Tank_Description
+    plainText: 0
+  mass:
+    variables: {fileID: 114703437598541787}
+    input: mass
+  centerOfMass:
+    variables: {fileID: 114703437598541787}
+    x:
+      variables: {fileID: 114703437598541787}
+      input: 0
+    y:
+      variables: {fileID: 114703437598541787}
+      input: height / 2
+  orientation: {fileID: 114618682377417806}
+  variablesModule: {fileID: 114703437598541787}
+  variants:
+  - variants:
+    - changes:
+      - name: width_original
+        type: 0
+        numberValue: 2
+        toggleValue: 0
+        textValue:
+      - name: height
+        type: 0
+        numberValue: 1
+        toggleValue: 0
+        textValue:
+      tags: []
+      cost: 0
+    - changes:
+      - name: width_original
+        type: 0
+        numberValue: 2
+        toggleValue: 0
+        textValue:
+      - name: height
+        type: 0
+        numberValue: 2
+        toggleValue: 0
+        textValue:
+      tags: []
+      cost: 0
+    - changes:
+      - name: width_original
+        type: 0
+        numberValue: 2
+        toggleValue: 0
+        textValue:
+      - name: height
+        type: 0
+        numberValue: 3
+        toggleValue: 0
+        textValue:
+      tags: []
+      cost: 0
+    - changes:
+      - name: width_original
+        type: 0
+        numberValue: 2
+        toggleValue: 0
+        textValue:
+      - name: height
+        type: 0
+        numberValue: 4
+        toggleValue: 0
+        textValue:
+      tags: []
+      cost: 0
+    tags:
+    - tag: {fileID: 11400000, guid: 61c6c967eff7848468f2977fea5cad98, type: 2}
+      priority: 2
+  - variants:
+    - changes:
+      - name: width_original
+        type: 0
+        numberValue: 3
+        toggleValue: 0
+        textValue:
+      - name: height
+        type: 0
+        numberValue: 1
+        toggleValue: 0
+        textValue:
+      tags: []
+      cost: 0
+    - changes:
+      - name: width_original
+        type: 0
+        numberValue: 3
+        toggleValue: 0
+        textValue:
+      - name: height
+        type: 0
+        numberValue: 2
+        toggleValue: 0
+        textValue:
+      tags: []
+      cost: 0
+    - changes:
+      - name: width_original
+        type: 0
+        numberValue: 3
+        toggleValue: 0
+        textValue:
+      - name: height
+        type: 0
+        numberValue: 3
+        toggleValue: 0
+        textValue:
+      tags: []
+      cost: 0
+    - changes:
+      - name: width_original
+        type: 0
+        numberValue: 3
+        toggleValue: 0
+        textValue:
+      - name: height
+        type: 0
+        numberValue: 4
+        toggleValue: 0
+        textValue:
+      tags: []
+      cost: 0
+    - changes:
+      - name: width_original
+        type: 0
+        numberValue: 3
+        toggleValue: 0
+        textValue:
+      - name: height
+        type: 0
+        numberValue: 8
+        toggleValue: 0
+        textValue:
+      tags: []
+      cost: 0
+    tags:
+    - tag: {fileID: 11400000, guid: 0875d6cd0e098254cb768888c2657bbe, type: 2}
+      priority: 0
+  - variants:
+    - changes:
+      - name: width_original
+        type: 0
+        numberValue: 4
+        toggleValue: 0
+        textValue:
+      - name: height
+        type: 0
+        numberValue: 1
+        toggleValue: 0
+        textValue:
+      tags: []
+      cost: 0
+    - changes:
+      - name: width_original
+        type: 0
+        numberValue: 4
+        toggleValue: 0
+        textValue:
+      - name: height
+        type: 0
+        numberValue: 2
+        toggleValue: 0
+        textValue:
+      tags: []
+      cost: 0
+    - changes:
+      - name: width_original
+        type: 0
+        numberValue: 4
+        toggleValue: 0
+        textValue:
+      - name: height
+        type: 0
+        numberValue: 3
+        toggleValue: 0
+        textValue:
+      tags: []
+      cost: 0
+    - changes:
+      - name: width_original
+        type: 0
+        numberValue: 4
+        toggleValue: 0
+        textValue:
+      - name: height
+        type: 0
+        numberValue: 4
+        toggleValue: 0
+        textValue:
+      tags: []
+      cost: 0
+    - changes:
+      - name: width_original
+        type: 0
+        numberValue: 4
+        toggleValue: 0
+        textValue:
+      - name: height
+        type: 0
+        numberValue: 8
+        toggleValue: 0
+        textValue:
+      tags: []
+      cost: 0
+    tags:
+    - tag: {fileID: 11400000, guid: ebf8cc9064fc4734185302a8e5c39e04, type: 2}
+      priority: 0
+  - variants:
+    - changes:
+      - name: width_original
+        type: 0
+        numberValue: 5
+        toggleValue: 0
+        textValue:
+      - name: height
+        type: 0
+        numberValue: 1
+        toggleValue: 0
+        textValue:
+      tags: []
+      cost: 0
+    - changes:
+      - name: width_original
+        type: 0
+        numberValue: 5
+        toggleValue: 0
+        textValue:
+      - name: height
+        type: 0
+        numberValue: 2
+        toggleValue: 0
+        textValue:
+      tags: []
+      cost: 0
+    - changes:
+      - name: width_original
+        type: 0
+        numberValue: 5
+        toggleValue: 0
+        textValue:
+      - name: height
+        type: 0
+        numberValue: 3
+        toggleValue: 0
+        textValue:
+      tags: []
+      cost: 0
+    - changes:
+      - name: width_original
+        type: 0
+        numberValue: 5
+        toggleValue: 0
+        textValue:
+      - name: height
+        type: 0
+        numberValue: 4
+        toggleValue: 0
+        textValue:
+      tags: []
+      cost: 0
+    - changes:
+      - name: width_original
+        type: 0
+        numberValue: 5
+        toggleValue: 0
+        textValue:
+      - name: height
+        type: 0
+        numberValue: 8
+        toggleValue: 0
+        textValue:
+      tags: []
+      cost: 0
+    tags:
+    - tag: {fileID: 11400000, guid: 5704207c881a4e940b8ec2cfb9665865, type: 2}
+      priority: 0
+  - variants:
+    - changes:
+      - name: width_original
+        type: 0
+        numberValue: 6
+        toggleValue: 0
+        textValue:
+      - name: height
+        type: 0
+        numberValue: 1
+        toggleValue: 0
+        textValue:
+      tags: []
+      cost: 0
+    - changes:
+      - name: width_original
+        type: 0
+        numberValue: 6
+        toggleValue: 0
+        textValue:
+      - name: height
+        type: 0
+        numberValue: 2
+        toggleValue: 0
+        textValue:
+      tags: []
+      cost: 0
+    - changes:
+      - name: width_original
+        type: 0
+        numberValue: 6
+        toggleValue: 0
+        textValue:
+      - name: height
+        type: 0
+        numberValue: 3
+        toggleValue: 0
+        textValue:
+      tags: []
+      cost: 0
+    - changes:
+      - name: width_original
+        type: 0
+        numberValue: 6
+        toggleValue: 0
+        textValue:
+      - name: height
+        type: 0
+        numberValue: 4
+        toggleValue: 0
+        textValue:
+      tags: []
+      cost: 0
+    - changes:
+      - name: width_original
+        type: 0
+        numberValue: 6
+        toggleValue: 0
+        textValue:
+      - name: height
+        type: 0
+        numberValue: 8
+        toggleValue: 0
+        textValue:
+      tags: []
+      cost: 0
+    tags:
+    - tag: {fileID: 11400000, guid: f1071a7170d45dc4d8b2d74979ff97c6, type: 2}
+      priority: 0
+  onPartUsed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114044625135789424}
+        m_TargetAssemblyTypeName:
+        m_MethodName: ToggleTransfer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument:
+          m_BoolArgument: 0
+        m_CallState: 2
+  temperature: -Infinity
+--- !u!114 &114618682377417806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2df2bde602a41f9e1694fa10654cf166, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  orientation:
+    value:
+      x: 1
+      y: 1
+      z: 0
+--- !u!114 &114703437598541787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad188898109cf4f70f12547a21a376d, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  doubleVariables:
+    saves:
+    - name: width_original
+      save: 1
+      data: 0001000000ffffffff010000000000000004010000000d53797374656d2e446f75626c6501000000076d5f76616c75650006000000000000f03f0b
+    - name: width_a
+      save: 1
+      data: 0001000000ffffffff010000000000000004010000000d53797374656d2e446f75626c6501000000076d5f76616c75650006000000000000f03f0b
+    - name: width_b
+      save: 1
+      data: 0001000000ffffffff010000000000000004010000000d53797374656d2e446f75626c6501000000076d5f76616c75650006000000000000f03f0b
+    - name: height
+      save: 1
+      data: 0001000000ffffffff010000000000000004010000000d53797374656d2e446f75626c6501000000076d5f76616c75650006000000000000f03f0b
+    - name: mass_wet
+      save: 0
+      data: 0001000000ffffffff010000000000000004010000000d53797374656d2e446f75626c6501000000076d5f76616c75650006000000000000f03f0b
+    - name: fuel_percent
+      save: 1
+      data: 0001000000ffffffff010000000000000004010000000d53797374656d2e446f75626c6501000000076d5f76616c75650006000000000000f03f0b
+    - name: mass
+      save: 0
+      data: 0001000000ffffffff010000000000000004010000000d53797374656d2e446f75626c6501000000076d5f76616c7565000600000000000000000b
+  boolVariables:
+    saves: []
+  stringVariables:
+    saves:
+    - name: color_tex
+      save: 1
+      data: 0001000000ffffffff01000000000000000601000000015f0b
+    - name: shape_tex
+      save: 1
+      data: 0001000000ffffffff01000000000000000601000000015f0b
+--- !u!114 &114884547391421755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e56ac973de88691020e976407155d29, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  attachmentSurfaces: 1
+  dragSurfaces: 1
+  colliderArea: 1
+  attachByOverlap: 1
+  physicsCollider: 0
+  clickArea: 1
+  baseDepth: 0
+  composedBaseDepth:
+    variables: {fileID: 0}
+    input:
+  isComposedDepth: 0
+  depthMultiplier: 1
+  advancedCut: 0
+  cut: 0
+  advancedCutData:
+    cuts: []
+  reduceResolution: 0
+  width_a:
+    variables: {fileID: 114703437598541787}
+    input: width_a
+  width_b:
+    variables: {fileID: 114703437598541787}
+    input: width_b
+  height_a:
+    variables: {fileID: 114703437598541787}
+    input: 0
+  height_b:
+    variables: {fileID: 114703437598541787}
+    input: height
+--- !u!114 &114099118695303065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 638fd03760e118dd88221b154550f882, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  renderQueueOffset: 0
+  pipeData: {fileID: 114884547391421755}
+  textures:
+    textureMode: 0
+    texture:
+      colorTexture: {fileID: 11400000, guid: 48f330f390d1f0241a5b6293bac14acf, type: 2}
+      shapeTexture: {fileID: 11400000, guid: db1d4f24c099e9142ba5c1d55e91165c, type: 2}
+    textures: []
+    widthMode: 0
+    width:
+      variables: {fileID: 0}
+      input:
+  colors:
+    mode: 0
+    color:
+      type: 0
+      colorBasic: {r: 1, g: 1, b: 1, a: 1}
+      colorModule: {fileID: 0}
+    colors: []
+  leftCover: 0
+  centerCover: 0
+  rightCover: 0
+  separatorRing: 0
+  smoothShading: 0
+  onSetColorTexture: {}
+--- !u!114 &114243736805655561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2646d95b09342de9d00ad0853d2b57f1, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  skinTag: tank
+  meshModules:
+  - {fileID: 114099118695303065}
+  colorTextureName:
+    variableName: color_tex
+    referenceToVariables: {fileID: 114703437598541787}
+    localValue:
+  shapeTextureName:
+    variableName: shape_tex
+    referenceToVariables: {fileID: 114703437598541787}
+    localValue:
+  disableColorSelect: 0
+  disableShapeSelect: 0
+--- !u!114 &114061268324235159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01f7c9df5ca5c66a7b39f1c8b52273c1, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  points:
+  - position:
+      variables: {fileID: 114703437598541787}
+      x:
+        variables: {fileID: 114703437598541787}
+        input: 0
+      y:
+        variables: {fileID: 114703437598541787}
+        input: 0
+  - position:
+      variables: {fileID: 114703437598541787}
+      x:
+        variables: {fileID: 114703437598541787}
+        input: 0
+      y:
+        variables: {fileID: 114703437598541787}
+        input: height
+--- !u!114 &114587765826080250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f2e729c62b3518df6d2b7ce4f141ea, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  adaptPoints:
+  - reciverType: 0
+    position:
+      variables: {fileID: 114703437598541787}
+      x:
+        variables: {fileID: 114703437598541787}
+        input: 0
+      y:
+        variables: {fileID: 114703437598541787}
+        input: 0
+    normal: {x: 0, y: -1}
+    adaptRange:
+      min:
+        variables: {fileID: 114703437598541787}
+        input: width_original - 3.5
+      max:
+        variables: {fileID: 114703437598541787}
+        input: width_original + 3.5
+    type: 0
+    extraTypes: []
+    priority:
+    inputArea:
+      variables: {fileID: 114703437598541787}
+      position:
+        variables: {fileID: 114703437598541787}
+        x:
+          variables: {fileID: 114703437598541787}
+          input:
+        y:
+          variables: {fileID: 114703437598541787}
+          input:
+      size:
+        variables: {fileID: 114703437598541787}
+        x:
+          variables: {fileID: 114703437598541787}
+          input:
+        y:
+          variables: {fileID: 114703437598541787}
+          input:
+    defaultOutput:
+      variables: {fileID: 114703437598541787}
+      input: width_original
+    outputOffset: 0
+    output:
+      variableName: width_a
+      referenceToVariables: {fileID: 114703437598541787}
+      localValue: 0
+    isOccupied:
+      variableName:
+      referenceToVariables: {fileID: 114703437598541787}
+      localValue: 0
+    differenceX:
+      variableName:
+      referenceToVariables: {fileID: 114703437598541787}
+      localValue: 0
+    differenceY:
+      variableName:
+      referenceToVariables: {fileID: 114703437598541787}
+      localValue: 0
+  - reciverType: 0
+    position:
+      variables: {fileID: 114703437598541787}
+      x:
+        variables: {fileID: 114703437598541787}
+        input: 0
+      y:
+        variables: {fileID: 114703437598541787}
+        input: height
+    normal: {x: 0, y: 1}
+    adaptRange:
+      min:
+        variables: {fileID: 114703437598541787}
+        input: width_original - 3.5
+      max:
+        variables: {fileID: 114703437598541787}
+        input: width_original + 3.5
+    type: 0
+    extraTypes: []
+    priority:
+    inputArea:
+      variables: {fileID: 114703437598541787}
+      position:
+        variables: {fileID: 114703437598541787}
+        x:
+          variables: {fileID: 114703437598541787}
+          input:
+        y:
+          variables: {fileID: 114703437598541787}
+          input:
+      size:
+        variables: {fileID: 114703437598541787}
+        x:
+          variables: {fileID: 114703437598541787}
+          input:
+        y:
+          variables: {fileID: 114703437598541787}
+          input:
+    defaultOutput:
+      variables: {fileID: 114703437598541787}
+      input: width_original
+    outputOffset: 0
+    output:
+      variableName: width_b
+      referenceToVariables: {fileID: 114703437598541787}
+      localValue: 0
+    isOccupied:
+      variableName:
+      referenceToVariables: {fileID: 114703437598541787}
+      localValue: 0
+    differenceX:
+      variableName:
+      referenceToVariables: {fileID: 114703437598541787}
+      localValue: 0
+    differenceY:
+      variableName:
+      referenceToVariables: {fileID: 114703437598541787}
+      localValue: 0
+  ignoreOccupied: 0
+  applySeparatorFix: 0
+  applyFairingConeFix: 0
+  original:
+    variableName:
+    referenceToVariables: {fileID: 0}
+    localValue: 0
+  width:
+    variableName:
+    referenceToVariables: {fileID: 0}
+    localValue: 0
+--- !u!114 &114709867586078768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c68108c5582e3a13b3f3fca440fe210, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  points:
+  - toggle: 0
+    enabled:
+      variableName:
+      referenceToVariables: {fileID: 0}
+      localValue: 0
+    position:
+      variables: {fileID: 114703437598541787}
+      x:
+        variables: {fileID: 114703437598541787}
+        input: 0
+      y:
+        variables: {fileID: 114703437598541787}
+        input: 0
+    normal: {x: 0, y: -1}
+    type: 0
+    output:
+      variables: {fileID: 114703437598541787}
+      input: width_a
+    outputOffset: 0
+    shareIsOccupied: 0
+    shareIndex: 0
+  - toggle: 0
+    enabled:
+      variableName:
+      referenceToVariables: {fileID: 0}
+      localValue: 0
+    position:
+      variables: {fileID: 114703437598541787}
+      x:
+        variables: {fileID: 114703437598541787}
+        input: 0
+      y:
+        variables: {fileID: 114703437598541787}
+        input: height
+    normal: {x: 0, y: 1}
+    type: 0
+    output:
+      variables: {fileID: 114703437598541787}
+      input: width_b
+    outputOffset: 0
+    shareIsOccupied: 0
+    shareIndex: 0
+--- !u!114 &114044625135789424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 227be73644e266b00fa8ecc4bba69654, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  resourceType: {fileID: 11400000, guid: 923c043ce5e45c24cb5e0fb2b20a0e80, type: 2}
+  wetMass:
+    variableName: mass_wet
+    referenceToVariables: {fileID: 114703437598541787}
+    localValue: 0
+  dryMassPercent:
+    variableName:
+    referenceToVariables: {fileID: 114703437598541787}
+    localValue: 0.1
+  resourcePercent:
+    variableName: fuel_percent
+    referenceToVariables: {fileID: 114703437598541787}
+    localValue: 0
+  setMass: 1
+  mass:
+    variableName: mass
+    referenceToVariables: {fileID: 114703437598541787}
+    localValue: 0
+  parent: {fileID: 0}
+  children: []
+  flowModules: []
+  showDescription: 1
+--- !u!114 &114589667821646929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 620d1f50e0748fe320a393221f7742fc, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  impactTolerance: 1
+  ownEngineNozzle: {fileID: 0}
+  polygon: {fileID: 114884547391421755}
+  collider_Polygon: {fileID: 0}
+  collider_Box: {fileID: 0}
+--- !u!114 &114372920208702427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 028fddfb48b1b4ce0022ebc431c5ef2d, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  polygonModule: {fileID: 114884547391421755}
+  density: 2.5
+  mass:
+    variableName: mass_wet
+    referenceToVariables: {fileID: 114703437598541787}
+    localValue: 0
+--- !u!114 &114025901758691103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f4902a03db30525467dc8f84d059d48, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+--- !u!114 &114985305603660343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c16a1b0c2ee1a91a79819b809f6f5b4a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  pack: 0
+  allowed:
+  - size:
+      variableName: width_a
+      referenceToVariables: {fileID: 114703437598541787}
+      localValue: 0
+    maxAllowedSize: 3.5
+  - size:
+      variableName: width_b
+      referenceToVariables: {fileID: 114703437598541787}
+      localValue: 0
+    maxAllowedSize: 3.5
+  - size:
+      variableName: height
+      referenceToVariables: {fileID: 114703437598541787}
+      localValue: 0
+    maxAllowedSize: 4
+--- !u!23 &23705390221481576
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 51740854247d55d4eb48990579bd60ce, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &33977153420339851
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Mesh: {fileID: 0}
+--- !u!114 &114336590748365959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c16a1b0c2ee1a91a79819b809f6f5b4a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  pack: 3
+  allowed:
+  - size:
+      variableName: width_a
+      referenceToVariables: {fileID: 114703437598541787}
+      localValue: 0
+    maxAllowedSize: 2
+  - size:
+      variableName: width_b
+      referenceToVariables: {fileID: 114703437598541787}
+      localValue: 0
+    maxAllowedSize: 2
+  - size:
+      variableName: height
+      referenceToVariables: {fileID: 114703437598541787}
+      localValue: 0
+    maxAllowedSize: 4

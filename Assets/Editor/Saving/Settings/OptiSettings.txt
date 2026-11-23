@@ -1,0 +1,4 @@
+{
+  "dynamicBuildOutline": false,
+  "dynamicOrbitResolution": false
+}

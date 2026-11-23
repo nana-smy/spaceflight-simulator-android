@@ -1,0 +1,36 @@
+namespace MultiplayerSFS.ServerCommon {
+public enum PacketType
+{
+	JoinRequest,
+	JoinResponse,
+	PlayerConnected,
+	PlayerDisconnected,
+	UpdatePlayerControl,
+	UpdatePlayerAuthority,
+	UpdateWorldTime,
+	UpdatePlayerColor,
+	SendChatMessage,
+	ShowToastMessage,
+	CreateRocket,
+	DestroyRocket,
+	UpdateRocketPrimary,
+	UpdateRocketSecondary,
+	DestroyPart,
+	UpdateStaging,
+	UpdatePart_EngineModule,
+	UpdatePart_WheelModule,
+	UpdatePart_BoosterModule,
+	UpdatePart_ParachuteModule,
+	UpdatePart_MoveModule,
+	UpdatePart_ResourceModule,
+	UpdateCheatStatus,
+	TimeWarpRequest,
+	TimeWarpVote,
+	TimeWarpVoteResponse,
+	TimeWarpResult,
+	UpdatePerformance,
+	UpdatePartHeat,
+	HostChanged,
+	SolarSystemFile
+}
+}

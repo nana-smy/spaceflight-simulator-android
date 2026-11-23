@@ -1,0 +1,15 @@
+{
+  "windowMode": 0,
+  "currentResolution": {
+    "x": 3072.0,
+    "y": 1920.0
+  },
+  "uiScale": 0.9975178,
+  "uiOpacity": 1.0,
+  "verticalSync": 1,
+  "fps": -1,
+  "cameraShake": true,
+  "orbitLinesCount": 3,
+  "FXAA": true,
+  "allowLandscape": true
+}

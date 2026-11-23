@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 860b7de57997b99969ef9f70b6398088, type: 3}
+  m_Name: Nozzle_4
+  m_EditorClassIdentifier:
+  multiple: 0
+  segments: []
+  shapeTex:
+    textures:
+    - texture: {fileID: 2800000, guid: 3ed2619c819c1bb47a39f99cb2d7feba, type: 3}
+      ideal: 0
+    border_Bottom:
+      uvSize: 0
+      sizeMode: 1
+      size: 0
+    border_Top:
+      uvSize: 0
+      sizeMode: 1
+      size: 0
+    center:
+      mode: 0
+      sizeMode: 1
+      size: 5
+      logoHeightPercent: 0.5
+      scaleLogoToFit: 0
+    fixedWidth: 0
+    fixedWidthValue: 1
+    flipToLight_X: 1
+    flipToLight_Y: 1
+    metalTexture: 0
+    icon: {fileID: 0}
+  shadowTex: {fileID: 11400000, guid: 83ef4b5eb0690154cb571d62b9a0aab3, type: 2}
+  tags: []
+  pack_Redstone_Atlas: 0

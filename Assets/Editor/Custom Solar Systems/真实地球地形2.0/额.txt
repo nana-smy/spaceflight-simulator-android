@@ -1,0 +1,66 @@
+{
+  "version": "1.5",
+  "BASE_DATA": {
+    "radius": 316200.0,
+    "gravity": 1.42,
+    "timewarpHeight": 5000.0,
+    "mapColor": {
+      "r": 0.35,
+      "g": 0.5,
+      "b": 1.0,
+      "a": 0.3
+    }
+  },
+  "TERRAIN_DATA": {
+    "TERRAIN_TEXTURE_DATA": {
+      "planetTexture": "海",
+      "planetTextureCutout": 0.9599,
+      "surfaceTexture_A": "Dark_Dust",
+      "surfaceTextureSize_A": {
+        "x": 20.0,
+        "y": 8.0
+      },
+      "surfaceTexture_B": "Hard_Rocks",
+      "surfaceTextureSize_B": {
+        "x": 40.0,
+        "y": 16.0
+      },
+      "terrainTexture_C": "Soft_Rocks",
+      "terrainTextureSize_C": {
+        "x": 280.0,
+        "y": 145.0
+      },
+      "surfaceLayerSize": 50.0,
+      "minFade": 0.0,
+      "maxFade": 1.0,
+      "shadowIntensity": 9.0,
+      "shadowHeight": 10.0
+    },
+    "terrainFormula": [ 
+      "OUTPUT = AddHeightMap(Perlin,19030.8016515536, 3)",
+      "OUTPUT = AddHeightMap(Perlin,2452.54445075783, 5)",
+      "OUTPUT = AddHeightMap(Perlin,1319.46891450771, 25)"
+    ],
+    "textureFormula": [
+      "OUTPUT = AddHeightMap(Perlin, 6793.69411338793, 1, Curve8)",
+      "OUTPUT = ApplyCurve(Curve8)",
+      "OUTPUT = ApplyCurve(Curve8)"
+    ],
+    "verticeSize": 2.0
+  },
+  "ORBIT_DATA": {
+    "parent": "海",
+    "semiMajorAxis": 12.5,
+    "eccentricity": 0.0,
+    "argumentOfPeriapsis": 0.0,
+    "multiplierSOI": 0.0,
+    "orbitLineResolution": 100
+  },
+  "ACHIEVEMENT_DATA": {
+    "Landed": true,
+    "Takeoff": true,
+    "Atmosphere": true,
+    "Orbit": true,
+    "Crash": true
+  }
+}

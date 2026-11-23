@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 860b7de57997b99969ef9f70b6398088, type: 3}
+  m_Name: Rivets
+  m_EditorClassIdentifier:
+  multiple: 0
+  segments: []
+  shapeTex:
+    textures:
+    - texture: {fileID: 2800000, guid: cde7669462bdf234c9d291617c773eb4, type: 3}
+      ideal: 1
+    - texture: {fileID: 2800000, guid: 4cbf63f14baadee48aa121adc0e1be42, type: 3}
+      ideal: 2
+    - texture: {fileID: 2800000, guid: a5c5bbf22b53d6e4d8309fcc157d46dd, type: 3}
+      ideal: 3
+    - texture: {fileID: 2800000, guid: ae9cbed66eafe7d4b872bdd7be477c51, type: 3}
+      ideal: 4
+    - texture: {fileID: 2800000, guid: 29d7479030fd5b341aa8da9aeb43b92c, type: 3}
+      ideal: 5
+    - texture: {fileID: 2800000, guid: 5ebe3d406b55ae14bb24741ce5e9ae61, type: 3}
+      ideal: 6
+    border_Bottom:
+      uvSize: 0.5
+      sizeMode: 1
+      size: 0
+    border_Top:
+      uvSize: 0.5
+      sizeMode: 1
+      size: 0
+    center:
+      mode: 0
+      sizeMode: 0
+      size: 0.5
+      logoHeightPercent: 0.5
+      scaleLogoToFit: 0
+    fixedWidth: 0
+    fixedWidthValue: 1
+    flipToLight_X: 1
+    flipToLight_Y: 1
+    metalTexture: 0
+    icon: {fileID: 21300000, guid: fe58e89a697fc98448d232fffd8e0fe1, type: 2}
+  shadowTex: {fileID: 11400000, guid: 0dd3cbd4caed1dc45822c4e840184720, type: 2}
+  tags:
+  - cone
+  - tank
+  - fairing
+  pack_Redstone_Atlas: 0

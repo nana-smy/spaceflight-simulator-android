@@ -1,0 +1,67 @@
+{
+  "version": "1.5",
+  "BASE_DATA": {
+    "radius": 1000.0,
+    "gravity": 0.087,
+    "timewarpHeight": 2000.0,
+    "mapColor": {
+      "r": 0.357944548,
+      "g": 0.3079988,
+      "b": 0.287188083,
+      "a": 1.0
+    }
+  },
+  "TERRAIN_DATA": {
+    "TERRAIN_TEXTURE_DATA": {
+      "planetTexture": "Phobos",
+      "planetTextureCutout": 0.935,
+      "surfaceTexture_A": "Soft_Rocks",
+      "surfaceTextureSize_A": {
+        "x": 24.0,
+        "y": 24.0
+      },
+      "surfaceTexture_B": "Hard_Rocks",
+      "surfaceTextureSize_B": {
+        "x": 24.0,
+        "y": 24.0
+      },
+      "terrainTexture_C": "Circles",
+      "terrainTextureSize_C": {
+        "x": 200.0,
+        "y": 150.0
+      },
+      "surfaceLayerSize": 35.0,
+      "minFade": 0.15,
+      "maxFade": 0.65,
+      "shadowIntensity": 8.0,
+      "shadowHeight": 4.0
+    },
+    "terrainFormula": [
+      "OUTPUT = AddHeightMap( Phobos, 6283.18530718, 300)",
+      "OUTPUT = AddHeightMap( Perlin, 6283.18530718, 15, Curve4)",
+      "M = AddHeightMap( Perlin, 6283.18530718, 2)",
+      "OUTPUT = AddHeightMap( Perlin, 1884.95559215, 8, null, M)",
+      "OUTPUT = AddHeightMap( Perlin, 502.654824574, 2, null, M)",
+      "a = AddHeightMap( Perlin, 167.551608191, 0.3, null, M)"
+    ],
+    "textureFormula": [
+      "OUTPUT = AddHeightMap( Perlin, 6283.18530718, 1)"
+    ],
+    "verticeSize": 0.25
+  },
+  "ORBIT_DATA": {
+    "parent": "Mars",
+    "semiMajorAxis": 1340000.0,
+    "eccentricity": 0.0,
+    "argumentOfPeriapsis": 0.0,
+    "multiplierSOI": 1.25,
+    "orbitLineResolution": 100
+  },
+  "ACHIEVEMENT_DATA": {
+    "Landed": true,
+    "Takeoff": true,
+    "Atmosphere": true,
+    "Orbit": true,
+    "Crash": true
+  }
+}

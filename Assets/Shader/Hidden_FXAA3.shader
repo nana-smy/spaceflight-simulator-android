@@ -1,0 +1,1 @@
+Shader "Hidden/FXAA3"{Properties{}SubShader{Pass{ZWrite Off Cull Off CGPROGRAM#pragma vertex vert #pragma fragment frag #include "UnityCG.cginc" struct v2f{float4 p:SV_POSITION;float2 uv:TEXCOORD0;};v2f vert(appdata_img v){v2f o;o.p=UnityObjectToClipPos(v.vertex);o.uv=v.texcoord;return o;}fixed4 frag(v2f i):SV_TARGET{return fixed4(0,0,0,0);}ENDCG}}}

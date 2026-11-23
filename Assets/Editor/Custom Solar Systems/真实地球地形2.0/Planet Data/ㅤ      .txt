@@ -1,0 +1,32 @@
+{
+  "version": "1.5",
+  "BASE_DATA": {
+    "radius": 31500,
+    "gravity": 0.98,
+    "timewarpHeight": 0.0,
+    "mapColor": {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 0
+    }
+  },
+  "POST_PROCESSING": {
+    "keys": []
+  },
+  "ORBIT_DATA": {
+    "parent": "Moon",
+    "semiMajorAxis": 0.0,
+    "eccentricity": 0.0,
+    "argumentOfPeriapsis": 0.0,
+    "multiplierSOI": 0,
+    "orbitLineResolution": -1
+  },
+  "ACHIEVEMENT_DATA": {
+    "Landed": false,
+    "Takeoff": false,
+    "Atmosphere": false,
+    "Orbit": false,
+    "Crash": false
+  }
+}

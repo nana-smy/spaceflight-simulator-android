@@ -1,0 +1,168 @@
+[
+  {
+    "rocketName": "",
+    "location": {
+      "address": "Earth",
+      "position": {
+        "x": 382.61648559570313,
+        "y": 315210.062210083
+      },
+      "velocity": {
+        "x": 2.1971836090087891,
+        "y": 19.218852996826172
+      }
+    },
+    "rotation": 353.234344,
+    "angularVelocity": -2.23472725E-05,
+    "throttleOn": false,
+    "throttlePercent": 0.0,
+    "RCS": false,
+    "parts": [
+      {
+        "n": "Engine Hawk",
+        "p": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "o": {
+          "x": 1.0,
+          "y": 1.0,
+          "z": 0.0
+        },
+        "t": "-Infinity",
+        "B": {
+          "engine_on": true,
+          "heat_on__for_creative_use": true,
+          "gimbal_on": true
+        }
+      },
+      {
+        "n": "Fuel Tank",
+        "p": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "o": {
+          "x": 1.0,
+          "y": 1.0,
+          "z": 0.0
+        },
+        "t": "-Infinity",
+        "N": {
+          "width_original": 2.0,
+          "width_a": 2.0,
+          "width_b": 2.0,
+          "height": 4.0,
+          "fuel_percent": 0.97253799615074055
+        },
+        "T": {
+          "color_tex": "_",
+          "shape_tex": "_"
+        }
+      },
+      {
+        "n": "RCS",
+        "p": {
+          "x": -1.0,
+          "y": 0.5
+        },
+        "o": {
+          "x": -1.0,
+          "y": 1.0,
+          "z": 0.0
+        },
+        "t": "-Infinity"
+      },
+      {
+        "n": "RCS",
+        "p": {
+          "x": -1.0,
+          "y": 3.5
+        },
+        "o": {
+          "x": -1.0,
+          "y": 1.0,
+          "z": 0.0
+        },
+        "t": "-Infinity"
+      },
+      {
+        "n": "RCS",
+        "p": {
+          "x": 1.0,
+          "y": 0.5
+        },
+        "o": {
+          "x": 1.0,
+          "y": 1.0,
+          "z": 0.0
+        },
+        "t": "-Infinity"
+      },
+      {
+        "n": "RCS",
+        "p": {
+          "x": 1.0,
+          "y": 3.5
+        },
+        "o": {
+          "x": 1.0,
+          "y": 1.0,
+          "z": 0.0
+        },
+        "t": "-Infinity"
+      },
+      {
+        "n": "Capsule",
+        "p": {
+          "x": 0.0,
+          "y": 4.0
+        },
+        "o": {
+          "x": 1.0,
+          "y": 1.0,
+          "z": 0.0
+        },
+        "t": "-Infinity",
+        "N": {
+          "temperature": "-Infinity"
+        },
+        "B": {
+          "needs_crew": false
+        },
+        "T": {
+          "astronaut": null
+        }
+      }
+    ],
+    "joints": [
+      {
+        "a": 0,
+        "b": 1
+      },
+      {
+        "a": 1,
+        "b": 6
+      },
+      {
+        "a": 1,
+        "b": 5
+      },
+      {
+        "a": 1,
+        "b": 4
+      },
+      {
+        "a": 1,
+        "b": 3
+      },
+      {
+        "a": 1,
+        "b": 2
+      }
+    ],
+    "stages": [],
+    "staging_EditMode": false,
+    "branch": 0
+  }
+]

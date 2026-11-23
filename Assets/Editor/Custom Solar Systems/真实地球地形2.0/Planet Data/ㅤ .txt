@@ -1,0 +1,58 @@
+{
+  "version": "1.5",
+  "BASE_DATA": {
+    "radius": 33000.0,
+    "radiusDifficultyScale": {},
+    "gravity": 0,
+    "gravityDifficultyScale": {},
+    "timewarpHeight": 0.0,
+    "mapColor": {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 0
+    },
+    "significant": false,
+    "rotateCamera": true
+  },
+  "ATMOSPHERE_VISUALS_DATA": {
+    "GRADIENT": {
+      "positionZ": 10000,
+      "height": 15000.0,
+      "texture": "None"
+    },
+    "CLOUDS": {
+      "texture": ".Meteor_Shower",
+      "startHeight": -3000.0,
+      "width": 491070.672705,
+      "height": 50000.0,
+      "alpha": 0.85,
+      "velocity": 1000
+    },
+    "FOG": {
+      "keys": []
+    }
+  },
+  "ORBIT_DATA": {
+    "parent": "Moon",
+    "semiMajorAxis": 45000.0,
+    "smaDifficultyScale": {
+      "Normal": 1.0,
+      "Hard": 4.0,
+      "Realistic": 34.32
+    },
+    "eccentricity": 0.05,
+    "argumentOfPeriapsis": 180.0,
+    "direction": 30,
+    "multiplierSOI": 0.0,
+    "soiDifficultyScale": {},
+    "orbitLineResolution": -1
+  },
+  "ACHIEVEMENT_DATA": {
+    "Landed": false,
+    "Takeoff": false,
+    "Atmosphere": false,
+    "Orbit": false,
+    "Crash": false
+  },
+}

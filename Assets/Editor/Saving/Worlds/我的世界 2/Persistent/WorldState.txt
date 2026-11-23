@@ -1,0 +1,14 @@
+{
+  "worldTime": 1000000.0,
+  "timewarpPhase": 0,
+  "mapView": false,
+  "mapPosition": {
+    "x": 365.0341102701862,
+    "y": 315025.98850973923,
+    "z": 30000.0
+  },
+  "mapAddress": "null",
+  "targetAddress": "null",
+  "playerAddress": "null",
+  "cameraDistance": 35.0
+}

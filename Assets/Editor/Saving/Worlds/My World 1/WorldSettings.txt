@@ -1,0 +1,26 @@
+{
+  "solarSystem": {
+    "name": "真实地球地形2.0"
+  },
+  "mode": {
+    "mode": 0,
+    "allowQuicksaves": true
+  },
+  "difficulty": {
+    "difficulty": 0
+  },
+  "playtime": {
+    "lastPlayedTime_Ticks": 639227719833812633,
+    "totalPlayTime_Seconds": 2450.0
+  },
+  "cheats": {
+    "infiniteFuel": true,
+    "noAtmosphericDrag": true,
+    "unbreakableParts": true,
+    "noGravity": false,
+    "noHeatDamage": true,
+    "noBurnMarks": false,
+    "infiniteBuildArea": true,
+    "partClipping": false
+  }
+}

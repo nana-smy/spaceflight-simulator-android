@@ -1,0 +1,52 @@
+{
+  "version": "1.5",
+  "BASE_DATA": {
+    "radius": 1,
+    "gravity": 0,
+    "timewarpHeight": 0,
+    "mapColor": {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 0,
+    }, 
+    "significant": false
+  },
+  "ATMOSPHERE_VISUALS_DATA": {
+    "GRADIENT": {
+      "positionZ": 4600000,
+      "height": 800000,
+      "texture": "None"
+    },
+    "CLOUDS": {
+      "texture": ".Earth_Lights",
+      "startHeight": 10000,
+      "width": -15428.32,
+      "height": 423000,
+      "alpha": 0.8,
+      "velocity": -0.00005
+    },
+    "FOG": {
+      "keys": []
+    }
+  },
+  "POST_PROCESSING": {
+    "keys": []
+  },
+  "ORBIT_DATA": {
+    "parent": ".ce",
+    "semiMajorAxis": 610000,
+    "eccentricity": 0,
+    "argumentOfPeriapsis": 90,
+    "direction": 0,
+    "multiplierSOI": 0,
+    "orbitLineResolution": -1
+  },
+  "ACHIEVEMENT_DATA": {
+    "Landed": false,
+    "Takeoff": false,
+    "Atmosphere": false,
+    "Orbit": false,
+    "Crash": false
+  }
+}

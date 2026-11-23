@@ -1,0 +1,100 @@
+[
+  {
+    "rocketName": "",
+    "location": {
+      "address": "Earth",
+      "position": {
+        "x": 365.0,
+        "y": 317223.46586943418
+      },
+      "velocity": {
+        "x": 0.0,
+        "y": 283.19017231464386
+      }
+    },
+    "rotation": 0.0,
+    "angularVelocity": 0.0,
+    "throttleOn": false,
+    "throttlePercent": 1.0,
+    "RCS": false,
+    "parts": [
+      {
+        "n": "Fuel Tank",
+        "p": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "o": {
+          "x": 1.0,
+          "y": 1.0,
+          "z": 0.0
+        },
+        "t": "-Infinity",
+        "N": {
+          "width_original": 2.0,
+          "width_a": 2.0,
+          "width_b": 2.0,
+          "height": 4.0,
+          "fuel_percent": 0.74207761526729044
+        },
+        "T": {
+          "color_tex": "_",
+          "shape_tex": "_"
+        }
+      },
+      {
+        "n": "Capsule",
+        "p": {
+          "x": 0.0,
+          "y": 4.0
+        },
+        "o": {
+          "x": 1.0,
+          "y": 1.0,
+          "z": 0.0
+        },
+        "t": "-Infinity",
+        "N": {
+          "temperature": "-Infinity"
+        },
+        "B": {
+          "needs_crew": false
+        },
+        "T": {
+          "astronaut": null
+        }
+      },
+      {
+        "n": "Engine Hawk",
+        "p": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "o": {
+          "x": 1.0,
+          "y": 1.0,
+          "z": 0.0
+        },
+        "t": "-Infinity",
+        "B": {
+          "engine_on": true,
+          "heat_on__for_creative_use": true,
+          "gimbal_on": true
+        }
+      }
+    ],
+    "joints": [
+      {
+        "a": 0,
+        "b": 2
+      },
+      {
+        "a": 0,
+        "b": 1
+      }
+    ],
+    "stages": [],
+    "staging_EditMode": false,
+    "branch": 0
+  }
+]

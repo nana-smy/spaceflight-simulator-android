@@ -1,0 +1,46 @@
+<linker>
+	<!--
+		IL2CPP 代码裁剪保护
+		MultiplayerSFS / ModLoader 通过反射（或序列化）访问的成员需要保留，
+		否则 IL2CPP 裁剪后运行时会 MissingMethodException / MissingFieldException。
+	-->
+	<assembly fullname="Assembly-CSharp">
+		<!-- ModLoader：mod 反射加载（已改为静态注册，仍保留序列化字段） -->
+		<type fullname="ModLoader.*" preserve="all" />
+
+		<!-- MultiplayerSFS：联机状态同步 + 网络序列化 -->
+		<type fullname="MultiplayerSFS.*" preserve="all" />
+
+		<!-- 存档/状态序列化（Newtonsoft.Json 反射访问私有成员） -->
+		<type fullname="SFS.World.WorldSave" preserve="all" />
+		<type fullname="SFS.World.RocketSave" preserve="all" />
+		<type fullname="SFS.World.WorldState" preserve="all" />
+		<type fullname="SFS.World.StageState" preserve="all" />
+		<type fullname="SFS.WorldBase.SavingCache" preserve="all" />
+		<type fullname="SFS.Career.CareerState" preserve="all" />
+		<type fullname="SFS.Career.AstronautState" preserve="all" />
+		<type fullname="SFS.Stats.*" preserve="all" />
+		<type fullname="SFS.Parts.*" preserve="all" />
+		<type fullname="SFS.Parts.Modules.*" preserve="all" />
+		<type fullname="SFS.Variables.*" preserve="all" />
+
+		<!-- 通用 UI / 场景 / 输入 -->
+		<type fullname="SFS.UI.*" preserve="all" />
+		<type fullname="SFS.Input.*" preserve="all" />
+		<type fullname="SFS.World.*" preserve="all" />
+		<type fullname="SFS.Builds.*" preserve="all" />
+
+		<!-- Translations：本地化序列化 -->
+		<type fullname="SFS.Translations.*" preserve="all" />
+
+		<!-- TranslucentImage 插件 -->
+		<type fullname="TranslucentImage.*" preserve="all" />
+	</assembly>
+
+	<!-- Newtonsoft.Json：IL2CPP 下需要完整保留（反序列化依赖反射） -->
+	<assembly fullname="Newtonsoft.Json" preserve="all" />
+
+	<!-- UniTask / Odin 等第三方库 -->
+	<assembly fullname="UniTask" preserve="all" />
+	<assembly fullname="Sirenix.OdinInspector.Attributes" preserve="all" />
+</linker>

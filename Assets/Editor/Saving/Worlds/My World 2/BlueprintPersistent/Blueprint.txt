@@ -1,0 +1,11 @@
+{
+  "center": 10.0,
+  "parts": [],
+  "stages": [],
+  "rotation": 0.0,
+  "offset": {
+    "x": 0.0,
+    "y": 0.0
+  },
+  "interiorView": true
+}
