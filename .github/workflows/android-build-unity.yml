@@ -1,21 +1,35 @@
-name: Android Build
+name: Android Build (Unity)
 
-# 需要 UNITY_LICENSE，故只手动触发
+# 需要 Unity 许可证：可以在触发对话框里临时填，也可以用仓库 secret
 on:
   workflow_dispatch:
+    inputs:
+      unity_license_base64:
+        description: 'Unity .ulf 的 base64（推荐）或单行原文，留空则用 UNITY_LICENSE secret'
+        required: false
+      unity_email:
+        description: 'Unity ID 邮箱，留空则用 UNITY_EMAIL secret'
+        required: false
+      unity_password:
+        description: 'Unity ID 密码，留空则用 UNITY_PASSWORD secret'
+        required: false
+      unity_version:
+        description: 'Unity 版本（工程是 2021.3.25f1c1，CI 用同版本号国际版）'
+        required: false
+        default: '2021.3.25f1'
 
 permissions:
   contents: write
 
 concurrency:
-  group: android-build-${{ github.ref }}
-  cancel-in-progress: true
+  group: android-build-unity
+  cancel-in-progress: false
 
 jobs:
   build:
-    name: Build APK
+    name: Build APK (Unity + IL2CPP)
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 180
 
     steps:
       - name: Checkout
@@ -23,13 +37,46 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Check Unity license secret
+      - name: Resolve Unity license
         env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          INPUT_LICENSE: ${{ inputs.unity_license_base64 }}
+          SECRET_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          INPUT_EMAIL: ${{ inputs.unity_email }}
+          SECRET_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          INPUT_PASSWORD: ${{ inputs.unity_password }}
+          SECRET_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         run: |
-          if [ -z "$UNITY_LICENSE" ]; then
-            echo "::error::缺少 UNITY_LICENSE secret（.ulf 内容），获取方式见 README「云构建」一节"
+          LIC="$INPUT_LICENSE"
+          if [ -z "$LIC" ]; then LIC="$SECRET_LICENSE"; fi
+          if [ -z "$LIC" ]; then
+            echo "::error::没有许可证：在触发对话框里填 unity_license_base64，或配置 UNITY_LICENSE secret"
             exit 1
+          fi
+
+          mkdir -p "$RUNNER_TEMP/unity"
+          if printf '%s' "$LIC" | grep -q '<'; then
+            printf '%s' "$LIC" > "$RUNNER_TEMP/unity/Unity_v.ulf"
+          else
+            printf '%s' "$LIC" | base64 -d > "$RUNNER_TEMP/unity/Unity_v.ulf"
+          fi
+
+          echo "许可证前 80 字节："
+          head -c 80 "$RUNNER_TEMP/unity/Unity_v.ulf"; echo
+          {
+            echo "UNITY_LICENSE<<__LIC_EOF__"
+            cat "$RUNNER_TEMP/unity/Unity_v.ulf"
+            echo
+            echo "__LIC_EOF__"
+          } >> "$GITHUB_ENV"
+
+          EMAIL="$INPUT_EMAIL"
+          if [ -z "$EMAIL" ]; then EMAIL="$SECRET_EMAIL"; fi
+          if [ -n "$EMAIL" ]; then echo "UNITY_EMAIL=$EMAIL" >> "$GITHUB_ENV"; fi
+
+          PASS="$INPUT_PASSWORD"
+          if [ -z "$PASS" ]; then PASS="$SECRET_PASSWORD"; fi
+          if [ -n "$PASS" ]; then
+            echo "UNITY_PASSWORD=$PASS" >> "$GITHUB_ENV"
           fi
 
       # Unity + IL2CPP 镜像很大，先腾出磁盘
@@ -51,15 +98,10 @@ jobs:
           restore-keys: |
             Library-Android-
 
-      - name: Build APK (Unity 2021.3 · IL2CPP · arm64)
+      - name: Build APK (IL2CPP · arm64)
         uses: game-ci/unity-builder@v4
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          # 工程来自中国版编辑器（2021.3.25f1c1），CI 使用同版本号国际版镜像
-          unityVersion: 2021.3.25f1
+          unityVersion: ${{ inputs.unity_version }}
           targetPlatform: Android
           androidExportType: androidPackage
           buildName: SpaceflightSimulator
@@ -69,13 +111,5 @@ jobs:
         with:
           name: SpaceflightSimulator-Android
           path: build/Android/*.apk
-          if-no-files-found: warn
+          if-no-files-found: error
           retention-days: 14
-
-      - name: Attach APK to GitHub Release
-        if: startsWith(github.ref, 'refs/tags/')
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release create "${GITHUB_REF_NAME}" build/Android/*.apk \
-            --title "${GITHUB_REF_NAME}" --generate-notes

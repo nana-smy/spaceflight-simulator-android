@@ -29,11 +29,17 @@ Unity 工程，自 Android 导出包整理而来。
 
 ## 云构建 B：Unity 构建（需要许可证）
 
-`.github/workflows/android-build-unity.yml`，手动触发，用 GameCI 跑完整 Unity 构建（含 IL2CPP 重编）：
+`.github/workflows/android-build-unity.yml`，手动触发，用 GameCI 跑完整 Unity 构建（含 IL2CPP 重编）。触发时可以在对话框里直接填许可证，不填就读仓库 secret：
+
+- `unity_license_base64`：`.ulf` 的 base64（推荐，`base64 -w0 Unity_v.ulf`）或单行原文
+- `unity_email` / `unity_password`：可选
+- `unity_version`：默认 `2021.3.25f1`
+
+也可以改成长期用 secret：
 
 | Secret | 说明 |
 |---|---|
-| `UNITY_LICENSE` | `.ulf` 许可证文件全文（Unity Personal 免费） |
+| `UNITY_LICENSE` | `.ulf` 许可证文件全文（Unity Personal 免费），对话框不填时使用 |
 | `UNITY_EMAIL` / `UNITY_PASSWORD` | 可选，Pro/Plus 的 `UNITY_SERIAL` 流程用 |
 
 获取 `.ulf`：
