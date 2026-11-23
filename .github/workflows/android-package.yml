@@ -21,6 +21,9 @@ jobs:
     name: Gradle assembleRelease
     runs-on: ubuntu-latest
     timeout-minutes: 40
+    env:
+      ANDROID_HOME: /usr/local/lib/android/sdk
+      ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
 
     steps:
       - name: Checkout
@@ -36,9 +39,12 @@ jobs:
 
       - name: Install Android SDK 30 / build-tools 30.0.2
         run: |
-          SDKMANAGER=$(find "$ANDROID_HOME/cmdline-tools" -name sdkmanager | head -1)
-          yes | "$SDKMANAGER" "platforms;android-30" "build-tools;30.0.2" > /dev/null
-          echo "ANDROID_HOME=$ANDROID_HOME"
+          SDKMANAGER=$(ls "$ANDROID_HOME"/cmdline-tools/*/bin/sdkmanager 2>/dev/null | head -1)
+          echo "sdkmanager: $SDKMANAGER"
+          test -n "$SDKMANAGER"
+          yes | "$SDKMANAGER" --licenses > /dev/null 2>&1 || true
+          "$SDKMANAGER" --install "platforms;android-30" "build-tools;30.0.2" 2>&1 | tail -3
+          ls "$ANDROID_HOME/platforms" "$ANDROID_HOME/build-tools"
 
       - name: Install Gradle 6.1.1
         run: |
