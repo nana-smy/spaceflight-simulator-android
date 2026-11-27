@@ -1,10 +1,9 @@
 # Unity 生成目录（仅仓库根目录）
+# 注意：不要在这里写 Builds/Logs/Build 这类目录名规则，
+# 团结云同步到 PlasticSCM 时会按目录名全局匹配，误伤 Assets 下同名源码目录
 /Library/
 /Temp/
 /Obj/
-/Build/
-/Builds/
-/Logs/
 /UserSettings/
 /MemoryCaptures/
 /Recordings/
