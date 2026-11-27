@@ -23,9 +23,6 @@ jobs:
           path: tjcloudbuild
           silent: 'false'
 
-      - name: List repository content
-        run: ls -l ./tjcloudbuild
-
       # 调用工程内编辑器脚本 Assets/Editor/BuildAndroidApk.cs
       # Build() 内：锁竖屏 Portrait + IL2CPP + ARM64 + minSdk22 + 5 场景出包
       - name: Build project
@@ -38,13 +35,13 @@ jobs:
           buildName: SpaceflightSimulator
           versioning: None
 
-      - name: Check build result
-        run: ls -lR ./tjcloudbuild/Builds || true
-
       # 上传制品到团结云开发，构建记录里下载 APK
+      # 脚本输出对齐 tj-builder 的 -customBuildPath（build/Android/），兜底匹配工程内 Builds/
       - name: Upload artifact
         uses: actions/tj-upload-artifact@v2
         with:
           name: Build-${{ steps.build-action.outputs.buildVersion }}
-          path: ./tjcloudbuild/Builds/**/*.apk
+          path: |
+            ./build/Android/**/*.apk
+            ./tjcloudbuild/Builds/**/*.apk
           if-no-files-found: error

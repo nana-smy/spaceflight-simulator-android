@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using UnityEditor;
 using UnityEditor.Build;
@@ -29,11 +30,15 @@ public static class BuildAndroidApk
         PlayerSettings.Android.targetArchitectures = AndroidArchitecture.ARM64;
         PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel22;
 
-        Directory.CreateDirectory("Builds");
+        // 优先使用云构建机传入的 -customBuildPath（build/Android/...），回退本地 Builds/
+        string outputPath = GetOutputPath("Builds/SpaceflightSimulator.apk");
+        string outputDir = Path.GetDirectoryName(outputPath);
+        if (!string.IsNullOrEmpty(outputDir)) Directory.CreateDirectory(outputDir);
+
         var options = new BuildPlayerOptions
         {
             scenes = Scenes,
-            locationPathName = "Builds/SpaceflightSimulator.apk",
+            locationPathName = outputPath,
             target = BuildTarget.Android,
             options = BuildOptions.None,
         };
@@ -54,5 +59,15 @@ public static class BuildAndroidApk
         PlayerSettings.allowedAutorotateToLandscapeLeft = true;
         PlayerSettings.allowedAutorotateToLandscapeRight = true;
         Debug.Log("[SFS] defaultInterfaceOrientation = " + PlayerSettings.defaultInterfaceOrientation);
+    }
+
+    static string GetOutputPath(string fallback)
+    {
+        string[] args = Environment.GetCommandLineArgs();
+        for (int i = 0; i < args.Length - 1; i++)
+        {
+            if (args[i] == "-customBuildPath") return args[i + 1];
+        }
+        return fallback;
     }
 }
