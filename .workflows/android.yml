@@ -1,0 +1,50 @@
+name: SFS Android Cloud Build
+
+# 团结云开发（devops.unity.cn）工作流
+# 文档: https://devops.unity.cn/help/docs/advanced/yaml
+# 触发：手动 或 push 到 main
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build Android APK
+    # 工程为 2021.3.25f1c1，选用同 2021.3 LTS 的 2021.3.41f1c1 Android 构建机（16核32G）
+    # 镜像列表: https://devops.unity.cn/help/docs/reference/config
+    runs-on: windows-server-2022-unity-2021.3.41f1c1-16c-32g
+
+    steps:
+      # 从团结云托管的版本控制检出工程
+      - name: Check out project repository
+        uses: actions/checkout-plasticscm@v1
+        with:
+          path: tjcloudbuild
+          silent: 'false'
+
+      - name: List repository content
+        run: ls -l ./tjcloudbuild
+
+      # 调用工程内编辑器脚本 Assets/Editor/BuildAndroidApk.cs
+      # Build() 内：锁竖屏 Portrait + IL2CPP + ARM64 + minSdk22 + 5 场景出包
+      - name: Build project
+        uses: actions/tj-builder@v3
+        id: build-action
+        with:
+          targetPlatform: Android
+          projectPath: ./tjcloudbuild
+          buildMethod: BuildAndroidApk.Build
+          buildName: SpaceflightSimulator
+          versioning: None
+
+      - name: Check build result
+        run: ls -lR ./tjcloudbuild/Builds || true
+
+      # 上传制品到团结云开发，构建记录里下载 APK
+      - name: Upload artifact
+        uses: actions/tj-upload-artifact@v2
+        with:
+          name: Build-${{ steps.build-action.outputs.buildVersion }}
+          path: ./tjcloudbuild/Builds/**/*.apk
+          if-no-files-found: error
