@@ -1,33 +1,44 @@
-name: Android Build (Unity)
+name: Android Build (Unity + IL2CPP)
 
-# 需要 Unity 许可证：可以在触发对话框里临时填，也可以用仓库 secret
+# 用法
+#   手动触发：Actions → 本工作流 → Run workflow，可临时填 Unity 许可证
+#   预先配置 Secret：UNITY_LICENSE / UNITY_EMAIL / UNITY_PASSWORD
+#   可选签名 Secret：ANDROID_KEYSTORE_BASE64 / ANDROID_KEYSTORE_PASS / ANDROID_KEY_ALIAS / ANDROID_KEY_PASS
+#   不配签名则输出 debug 签名 APK（可安装测试，不能上架）
+
 on:
   workflow_dispatch:
     inputs:
-      unity_license_base64:
-        description: 'Unity .ulf 的 base64（推荐）或单行原文，留空则用 UNITY_LICENSE secret'
-        required: false
-      unity_email:
-        description: 'Unity ID 邮箱，留空则用 UNITY_EMAIL secret'
-        required: false
-      unity_password:
-        description: 'Unity ID 密码，留空则用 UNITY_PASSWORD secret'
-        required: false
       unity_version:
-        description: 'Unity 版本（工程是 2021.3.25f1c1，CI 用同版本号国际版）'
+        description: 'Unity 版本（工程为 2021.3.25f1c1，CI 用同号国际版）'
         required: false
         default: '2021.3.25f1'
+      export_type:
+        description: '产物类型：androidPackage = APK，androidAppBundle = AAB'
+        required: false
+        default: 'androidPackage'
+        type: choice
+        options: [ 'androidPackage', 'androidAppBundle' ]
+      unity_license_base64:
+        description: 'Unity .ulf 的 base64（留空则用 UNITY_LICENSE secret）'
+        required: false
+      unity_email:
+        description: 'Unity ID 邮箱（留空则用 UNITY_EMAIL secret）'
+        required: false
+      unity_password:
+        description: 'Unity ID 密码（留空则用 UNITY_PASSWORD secret）'
+        required: false
 
 permissions:
   contents: write
 
 concurrency:
-  group: android-build-unity
+  group: android-build-unity-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
   build:
-    name: Build APK (Unity + IL2CPP)
+    name: Build Android
     runs-on: ubuntu-latest
     timeout-minutes: 180
 
@@ -36,6 +47,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
+          lfs: false
 
       - name: Resolve Unity license
         env:
@@ -46,40 +58,30 @@ jobs:
           INPUT_PASSWORD: ${{ inputs.unity_password }}
           SECRET_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         run: |
-          LIC="$INPUT_LICENSE"
-          if [ -z "$LIC" ]; then LIC="$SECRET_LICENSE"; fi
+          LIC="$INPUT_LICENSE"; [ -z "$LIC" ] && LIC="$SECRET_LICENSE"
           if [ -z "$LIC" ]; then
-            echo "::error::没有许可证：在触发对话框里填 unity_license_base64，或配置 UNITY_LICENSE secret"
+            echo "::error::缺少 Unity 许可证：在触发对话框填 unity_license_base64，或配置 UNITY_LICENSE secret"
             exit 1
           fi
-
           mkdir -p "$RUNNER_TEMP/unity"
           if printf '%s' "$LIC" | grep -q '<'; then
             printf '%s' "$LIC" > "$RUNNER_TEMP/unity/Unity_v.ulf"
           else
             printf '%s' "$LIC" | base64 -d > "$RUNNER_TEMP/unity/Unity_v.ulf"
           fi
-
-          echo "许可证前 80 字节："
-          head -c 80 "$RUNNER_TEMP/unity/Unity_v.ulf"; echo
+          echo "license bytes: $(wc -c < "$RUNNER_TEMP/unity/Unity_v.ulf")"
           {
             echo "UNITY_LICENSE<<__LIC_EOF__"
             cat "$RUNNER_TEMP/unity/Unity_v.ulf"
             echo
             echo "__LIC_EOF__"
           } >> "$GITHUB_ENV"
-
-          EMAIL="$INPUT_EMAIL"
-          if [ -z "$EMAIL" ]; then EMAIL="$SECRET_EMAIL"; fi
+          EMAIL="$INPUT_EMAIL"; [ -z "$EMAIL" ] && EMAIL="$SECRET_EMAIL"
           if [ -n "$EMAIL" ]; then echo "UNITY_EMAIL=$EMAIL" >> "$GITHUB_ENV"; fi
+          PASS="$INPUT_PASSWORD"; [ -z "$PASS" ] && PASS="$SECRET_PASSWORD"
+          if [ -n "$PASS" ]; then echo "UNITY_PASSWORD=$PASS" >> "$GITHUB_ENV"; fi
 
-          PASS="$INPUT_PASSWORD"
-          if [ -z "$PASS" ]; then PASS="$SECRET_PASSWORD"; fi
-          if [ -n "$PASS" ]; then
-            echo "UNITY_PASSWORD=$PASS" >> "$GITHUB_ENV"
-          fi
-
-      # Unity + IL2CPP 镜像很大，先腾出磁盘
+      # IL2CPP 镜像体积大，先腾磁盘（保留 Android 相关组件）
       - name: Free disk space
         uses: jlumbroso/free-disk-space@v1.3.1
         with:
@@ -98,18 +100,30 @@ jobs:
           restore-keys: |
             Library-Android-
 
-      - name: Build APK (IL2CPP · arm64)
+      - name: Build APK/AAB (IL2CPP · arm64)
         uses: game-ci/unity-builder@v4
         with:
           unityVersion: ${{ inputs.unity_version }}
           targetPlatform: Android
-          androidExportType: androidPackage
+          androidExportType: ${{ inputs.export_type }}
           buildName: SpaceflightSimulator
+          androidKeystoreName: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' && 'release.keystore' || '' }}
+          androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          androidKeystorePass: ${{ secrets.ANDROID_KEYSTORE_PASS }}
+          androidKeyaliasName: ${{ secrets.ANDROID_KEY_ALIAS }}
+          androidKeyaliasPass: ${{ secrets.ANDROID_KEY_PASS }}
+          allowDirtyBuild: true
 
-      - name: Upload APK artifact
+      - name: Collect artifacts
+        run: |
+          mkdir -p out
+          find build -type f \( -name '*.apk' -o -name '*.aab' \) -exec cp -v {} out/ \;
+          ls -lh out
+
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: SpaceflightSimulator-Android
-          path: build/Android/*.apk
+          path: out/*
           if-no-files-found: error
           retention-days: 14
