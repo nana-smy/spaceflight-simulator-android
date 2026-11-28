@@ -146,6 +146,7 @@ namespace SFS
 			{
 				EnsureWorldUILayout();
 			}
+			EnsureDialogFitLayout();
 		}
 
 		// World 界面改版挂载：World_PC 加载后确保 WorldUILayout 存在（随场景销毁，重建幂等）
@@ -161,6 +162,17 @@ namespace SFS
 				go.transform.SetParent(SFS.World.GameManager.main.transform, false);
 			}
 			go.AddComponent<SFS.World.WorldUILayout>();
+		}
+
+		// 竖屏弹窗适配：各场景加载后幂等挂载 DialogFitLayout（随场景销毁，重建幂等）
+		private void EnsureDialogFitLayout()
+		{
+			if (FindObjectOfType<DialogFitLayout>() != null)
+			{
+				return;
+			}
+			GameObject go = new GameObject("Dialog Fit Layout");
+			go.AddComponent<DialogFitLayout>();
 		}
 
 		// 主菜单大标题（GO13 "Title"，锚(0.5,0.81)，基准 1042×307 scale 1.25×1.3）
