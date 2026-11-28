@@ -415,11 +415,16 @@ namespace SFS
 			onOpacityChanged.Invoke();
 			QualitySettings.vSyncCount = settings.verticalSync;
 			Application.targetFrameRate = settings.fps;
-			// 竖屏 1100×1400 为默认；World/Build 界面始终横屏 1400×1100；屏幕旋转开关(allowLandscape)可让其他界面也横屏
 			string scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
 			bool allowLandscape = settings.allowLandscape || scene.Contains("World") || scene.Contains("Build");
-			Screen.SetResolution(allowLandscape ? 1400 : 1100, allowLandscape ? 1100 : 1400, FullScreenMode.Windowed);
-			Debug.Log("[VideoSettingsPC] 场景=" + scene + " 分辨率=" + Screen.width + "x" + Screen.height);
+			// 桌面端：竖屏 1100×1400，World/Build 横屏 1400×1100（PC 窗口逻辑）。
+			// Android/iOS：不强制 PC 窗口分辨率，沿用设备原生全屏分辨率，避免固定比例帧缓冲被拉伸导致 3D 星球与 UI 变形。
+			bool mobile = Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer;
+			if (!mobile)
+			{
+				Screen.SetResolution(allowLandscape ? 1400 : 1100, allowLandscape ? 1100 : 1400, FullScreenMode.Windowed);
+			}
+			Debug.Log("[VideoSettingsPC] 场景=" + scene + " 平台=" + Application.platform + " 分辨率=" + Screen.width + "x" + Screen.height);
 			FitMainMenuTitle();
 			if (settings.currentResolution.x == 0f && settings.currentResolution.y == 0f)
 			{
